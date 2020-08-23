@@ -3,9 +3,9 @@
 Every other day or so I get an Email from Medium.com with a daily digest of articles they think I might like.
 This a cool feature and I like to go through the articles with a cup of coffee when I have the time. The only problem is
 that Medium articles are prone to click-bait titles that don't necessarily represent what the article is actully about.
-Usually I have to sift through the articles, skimming to see if I can glance anything worth reading, and by that point: my coffee might be cold :/
+Usually I have to sift through the articles, skimming to see if I can spot anything worth reading, and by that point my coffee might be cold :/
 
-Here I aim to optimize this sifting process by summarizing every article instead with a process that.
+Here I aim to optimize this sifting process by summarizing every article instead!
 
 ## The Script
 
