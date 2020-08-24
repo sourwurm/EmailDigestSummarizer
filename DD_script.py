@@ -353,36 +353,6 @@ for sent_score in scores:
 df['Summary'] = sums
 
 
-# #### Full Article
-
-# In[22]:
-
-
-df.iloc[5,2]
-
-
-# In[23]:
-
-
-df.iloc[5,4]
-
-
-# #### Summarized Article
-
-# In[24]:
-
-
-df.iloc[5,5]
-
-
-# In[25]:
-
-
-df
-
-
-# In[26]:
-
 
 def last_clean(string):
     
@@ -408,20 +378,14 @@ df['Author'] = df['Author'].apply(last_clean)
 df['Published'] = df['Published'].apply(one_more)
 
 
-# In[28]:
 
-
-df.head()
-
-
-# ### Saving to a csv
 
 # In[29]:
 
 
 top = '''<!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>Your Daily Digest</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
