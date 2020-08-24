@@ -14,6 +14,7 @@ from newspaper import Article, ArticleException, news_pool
 
 import pandas as pd
 import numpy as np
+import random
 
 from nltk import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
@@ -21,6 +22,8 @@ import re
 import heapq
 
 from datetime import date
+import webbrowser
+import tempfile
 
 
 # ### Scraping emails
@@ -32,7 +35,7 @@ from datetime import date
 user = 'YOUR EMAIL'
 
 #password is ideally an app password to maintain account security
-#instructions on how to get your gmail app password: https://support.google.com/accounts/answer/185833?hl=en
+#instructions: https://support.google.com/accounts/answer/185833?hl=en
 password = 'YOUR PASSWORD'
 
 #imap url for gmail
@@ -352,13 +355,13 @@ df['Summary'] = sums
 
 # #### Full Article
 
-# In[28]:
+# In[22]:
 
 
 df.iloc[5,2]
 
 
-# In[22]:
+# In[23]:
 
 
 df.iloc[5,4]
@@ -366,32 +369,173 @@ df.iloc[5,4]
 
 # #### Summarized Article
 
-# In[23]:
+# In[24]:
 
 
 df.iloc[5,5]
 
 
-# In[24]:
+# In[25]:
 
 
 df
 
 
-# ### Saving to a csv
-
-# In[25]:
-
-
-#including todays date
-today = date.today().strftime("%b-%d-%Y")
-
-
 # In[26]:
 
 
-#DD: Daily Digest
-df.to_csv('DD_'+ today +'.csv')
+def last_clean(string):
+    
+    string = str(string)
+    string = string.replace("['", '')
+    string = string.replace("']", '')
+
+    
+    return string
+
+def one_more(string):
+    
+    string = str(string)
+    string = re.sub('[ ].*', '', string)
+
+    return string
+
+
+# In[27]:
+
+
+df['Author'] = df['Author'].apply(last_clean)
+df['Published'] = df['Published'].apply(one_more)
+
+
+# In[28]:
+
+
+df.head()
+
+
+# ### Saving to a csv
+
+# In[29]:
+
+
+top = '''<!DOCTYPE html>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee,.fa-bolt,.fa-hourglass-2,.fa-map,.fa-hand-peace-o,.fa-tv,.fa-superpowers, .fa-industry,.fa-first-order,.fa-shopping-basket, .fa-thermometer {font-size:200px}
+</style>
+<body>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Your Links:</a>
+    <a href="https://medium.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Medium</a>
+    <a href="https://reddit.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Reddit</a>
+    <a href="https://www.linkedin.com/feed/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">LinkedIn</a>
+    <a href="https://www.gmail.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Gmail</a>
+  </div>
+</div>
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">Your Daily Digest</h1>
+  <p class="w3-xlarge">(Summarized)</p>
+</header>'''
+
+
+# In[30]:
+
+
+bottom = '''<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <p>Contact</p>
+  <div class="w3-xlarge w3-padding-32">
+    <a href = "https://www.linkedin.com/in/david-lopez-794790199/"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+    <a href = "https://sourwurm.github.io./"><i class="fa fa-github w3-hover-opacity"></i></a>
+    <a href = "mailto:david.eric.lopez@gmail.com"><i class="fa fa-envelope w3-hover-opacity"></i></a>
+ </div>
+ <p>Developed by David Lopez</p>
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+</body>
+</html>'''
+
+
+# In[31]:
+
+
+def grid(df):
+    
+    html = ''
+    icons = ['coffee', 'anchor', 'hourglass-2', 'bolt', 'map', 'hand-peace-o', 'tv',
+             'superpowers', 'industry', 'thermometer', 'first-order', 'shopping-basket']
+    
+    for i in range(0, len(df)):
+        
+        icon = random.choice(icons)
+        
+        if i % 2 ==0:
+            html+= '''<!-- Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>{title}</h1>
+      <h5 class="w3-padding-32">{author} | {published}</h5>
+      <a href = "{link}">Full Article</a>
+      <p class="w3-text-grey">{summary}</p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-{icon} w3-padding-64 w3-text-red"></i>
+    </div>
+  </div>
+</div>'''.format(title = df.iloc[i, 2], author = df.iloc[i, 1], 
+                   published = df.iloc[i, 3], link = df.iloc[i, 0], 
+                   summary = df.iloc[i, 5], icon = icon)
+        
+        else:
+            html += '''<!-- Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-{icon} w3-padding-64 w3-text-red w3-margin-right"></i>
+    </div>
+    <div class="w3-twothird">
+      <h1>{title}</h1>
+      <h5 class="w3-padding-32">{author} | {published}</h5>
+      <a href = "{link}">Full Article</a>
+      <p>{summary}</p>
+    </div>
+  </div>
+</div>'''.format(icon = icon, title = df.iloc[i, 2], author = df.iloc[i, 1], 
+                   published = df.iloc[i, 3], link = df.iloc[i, 0], 
+                   summary = df.iloc[i, 5])
+        
+    return html
+
+
+# In[32]:
+
+
+html = top + grid(df) + bottom
+
+
+# In[33]:
+
+
+with tempfile.NamedTemporaryFile('w', delete=False, suffix='.html', encoding = 'utf-8') as f:
+    url = 'file://' + f.name
+    f.write(html)
+webbrowser.open(url)
 
 
 # In[ ]:
