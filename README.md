@@ -11,17 +11,17 @@ Here I aim to optimize this sifting process by summarizing every article instead
 This script looks for Medium emails in your Inbox; meaning it's looking in Primary, Social, Promotions, etc.. This can potentially be A LOT of articles if you're not
 on top of deleting your emails. To control this, the script only returns the most recent email by default. 
 
-If you'd like to retrieve ALL emails from medium, then uncomment the code I left under the get_emails function. This is generally unrecommended as each email may contain up to 20 articles, and if you have say 20 daily digests in your inbox, you might have more than you care to read and can expect the script to take much longer to run.
+If you'd like to retrieve ALL emails from medium, then uncomment the code I left under the get_emails function. This is not recommended as each email may contain up to 20 articles, and if you have say 20 daily digests in your inbox, you might have more than you care to read and can expect the script to take much longer to run.
 
 ## Getting Started
 Run pip install -r requirements.txt to install all dependencies.
 
 Otherwise, open either the notebook or .py file and enter your email and password to your gmail account. I highly recommend you create an app password with gmail in order to ensure your account remains secure! Here's a how-to for gmail users: https://support.google.com/accounts/answer/185833?hl=en
 
-After that, just run the script and your articles should appear in your browser window.
+After that, just run the script and your articles should appear in your browser window. The links in the navigator bar take you to your accounts on the respective sites, for ease of getting your day started. The links at the very bottom under "Contact" link to my own profiles, in case you're curious to learn more about me.
 
-![](/ex2)
-![](/ex2)
+![](/ex2.png)
+![](/ex1.png)
 
 ## Breakdown of Steps
 This is a high-level explanation of the steps the script takes.
