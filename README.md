@@ -18,11 +18,13 @@ Run pip install -r requirements.txt to install all dependencies.
 
 Otherwise, open either the notebook or .py file and enter your email and password to your gmail account. I highly recommend you create an app password with gmail in order to ensure your account remains secure! Here's a how-to for gmail users: https://support.google.com/accounts/answer/185833?hl=en
 
-After that, just run the script and you're good to go. The csv will appear in the same folder that you're running the script from. 
+After that, just run the script and your articles should appear in your browser window.
 
+![](/ex2)
+![](/ex2)
 
 ## Breakdown of Steps
-
+This is a high-level explanation of the steps the script takes.
 1. Sign in to gmail
 2. Look for emails coming from noreply@Medium.com
 3. Parse those emails for the article links
@@ -32,7 +34,3 @@ After that, just run the script and you're good to go. The csv will appear in th
 7. Score each sentence in every article based on the sum of its weighted word frequencies
 8. Get the seven highest-ranking sentences to create a summary of the article
 9. Export to csv
-
-
-### Next Steps for this Project
-Working on presenting your summarized articles in a web-browser format. So after the script finishes running, a browser window opens, containing the summaries for every article, along with their corresponding info (title, author, link, etc.).
