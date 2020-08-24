@@ -20,7 +20,10 @@ Otherwise, open either the notebook or .py file and enter your email and passwor
 
 After that, just run the script and your articles should appear in your browser window. The links in the navigator bar take you to your accounts on the respective sites, for ease of getting your day started. The links at the very bottom under "Contact" link to my own profiles, in case you're curious to learn more about me.
 
+Home Screen
 ![](/ex2.png)
+
+Example Summary
 ![](/ex1.png)
 
 ## Breakdown of Steps
