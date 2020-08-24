@@ -5,27 +5,21 @@
 # 
 # Gets all of your daily digest emails from medium and summarizing each article within them! Have all of your articles summarized while you fix youself a cup of coffee :^)
 
-# In[134]:
+# In[1]:
 
 
 import imaplib
 import email
-
-import sys
+from newspaper import Article, ArticleException, news_pool
 
 import pandas as pd
 import numpy as np
-import random
-
-import requests
-from newspaper import Article, ArticleException, news_pool
 
 from nltk import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
-
+import re
 import heapq
 
-import re
 from datetime import date
 
 
@@ -35,10 +29,10 @@ from datetime import date
 
 
 #user should be your email address in the form "----@gmail.com"
-user = 'YOUR EMAIL@gmail.com'
+user = 'YOUR EMAIL'
 
 #password is ideally an app password to maintain account security
-#instructions: https://support.google.com/accounts/answer/185833?hl=en
+#instructions on how to get your gmail app password: https://support.google.com/accounts/answer/185833?hl=en
 password = 'YOUR PASSWORD'
 
 #imap url for gmail
@@ -65,7 +59,7 @@ def get_body(msg):
 
 def search(key, value, con):
     
-    #search for key value pairs
+    #search for key value pairs matching FROM noreply@medium.com
     result, data = con.search(None, key, '"{}"'.format(value))
     
     return data
@@ -76,15 +70,22 @@ def search(key, value, con):
 
 def get_emails(result_bytes):
     
-    #get list of emails under a particular label
+    #get emails under a particular label
     #in this case, the inbox
     #stored inside a list
     msgs = []
     
-    for num in result_bytes[0].split():
-        
-        typ, data = con.fetch(num, '(RFC822)')
-        msgs.append(data)
+    ####only retrieving the latest email
+    num = result_bytes[0].split()[-1]
+
+    typ, data = con.fetch(num, '(RFC822)')
+    msgs.append(data)
+    
+    ####if youd like to retrieve all emails, uncomment the following:
+    
+    #for num in result_bytes[0].split():
+        #typ, data = con.fetch(num, '(RFC822)')
+        #msgs.append(data)
     
     return msgs
 
@@ -156,22 +157,9 @@ for val in check:
         links.append(val)
 
 
-# In[32]:
-
-
-articles = [Article(link, fetch_images = False) for link in links]
-
-news_pool.set(articles, threads_per_source = 6)
-
-news_pool.join()
-
-for i in range(0, len(articles)):
-    articles[i].parse()
-
-
 # ### Scraping articles
 
-# In[51]:
+# In[11]:
 
 
 title = []
@@ -201,7 +189,7 @@ for i in range(0, len(articles)):
     body.append(articles[i].text)
 
 
-# In[52]:
+# In[12]:
 
 
 #putting together the dataframe
@@ -210,7 +198,7 @@ df = pd.DataFrame({'Link': links, 'Author':author, 'Title':title, 'Published':pu
 
 # ### Cleaning text
 
-# In[53]:
+# In[13]:
 
 
 def body_wash(string, punct = False):
@@ -232,14 +220,14 @@ def body_wash(string, punct = False):
         return string
 
 
-# In[57]:
+# In[14]:
 
 
 #cleaning the body of test
 df['Body'] = df['Body'].apply(body_wash)
 
 
-# In[58]:
+# In[15]:
 
 
 sent_lst = []
@@ -249,7 +237,7 @@ for body in df['Body']:
     sent_lst.append(sent_tokenize(body))
 
 
-# In[59]:
+# In[16]:
 
 
 #body of text cleaned, with puntuation removed
@@ -258,7 +246,7 @@ formatted = list(df['Body'].apply(body_wash, punct = True))
 
 # ### Summarizing articles
 
-# In[60]:
+# In[17]:
 
 
 stop = stopwords.words('english')
@@ -287,7 +275,7 @@ for txt in formatted:
     freqs.append(word_freq)
 
 
-# In[61]:
+# In[18]:
 
 
 #getting the relative frequency of each word
@@ -302,7 +290,7 @@ for word_freq in freqs:
         word_freq[word] = (word_freq[word]/max_freq)
 
 
-# In[62]:
+# In[19]:
 
 
 scores = []
@@ -337,7 +325,7 @@ for i, lst in enumerate(sent_lst):
                     
 
 
-# In[226]:
+# In[20]:
 
 
 #empty list holding every summary
@@ -356,7 +344,7 @@ for sent_score in scores:
     sums.append(summary)
 
 
-# In[227]:
+# In[21]:
 
 
 df['Summary'] = sums
@@ -364,18 +352,42 @@ df['Summary'] = sums
 
 # #### Full Article
 
+# In[28]:
+
+
+df.iloc[5,2]
+
+
+# In[22]:
+
+
+df.iloc[5,4]
+
+
+# #### Summarized Article
+
+# In[23]:
+
+
+df.iloc[5,5]
+
+
+# In[24]:
+
+
+df
 
 
 # ### Saving to a csv
 
-# In[191]:
+# In[25]:
 
 
 #including todays date
 today = date.today().strftime("%b-%d-%Y")
 
 
-# In[192]:
+# In[26]:
 
 
 #DD: Daily Digest
