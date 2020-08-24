@@ -28,6 +28,8 @@ After that, just run the script and your articles should appear in your browser 
 
 ![](/ex1.png)
 
+Note: Articles with missing authors display empty bracket (for now).
+
 ## Breakdown of Steps
 This is a high-level explanation of the steps the script takes.
 1. Sign in to gmail
