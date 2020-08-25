@@ -40,4 +40,5 @@ This is a high-level explanation of the steps the script takes.
 6. Calculate weighted word frequencies for every word in every sentence, for every article
 7. Score each sentence in every article based on the sum of its weighted word frequencies
 8. Get the seven highest-ranking sentences to create a summary of the article
-9. Export to csv
+9. Convert relevant info into HTML
+10. Create a temporary HTML file, and present it
