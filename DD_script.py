@@ -359,7 +359,8 @@ def last_clean(string):
     string = str(string)
     string = string.replace("['", '')
     string = string.replace("']", '')
-
+    string = string.replace('[', '')
+    string = string.replace(']', '')
     
     return string
 
