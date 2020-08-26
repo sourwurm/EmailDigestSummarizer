@@ -1,4 +1,2 @@
-heapq
-imaplib
-email
+nltk
 newspaper3k
