@@ -15,7 +15,8 @@ If you'd like to retrieve ALL emails from medium, then uncomment the code I left
 
 ## Getting Started
 - Run pip install -r requirements.txt to install all dependencies.
-- Download punctuation lexicon: nltk.download('punkt')  
+- Download punctuation lexicon: nltk.download('punkt')
+- Download stopwords lexicon: nltk.download('stopwords')
 
 Otherwise, open either the notebook or .py file and enter your email and password to your gmail account. I highly recommend you create an app password with gmail in order to ensure your account remains secure! Here's a how-to for gmail users: https://support.google.com/accounts/answer/185833?hl=en
 
