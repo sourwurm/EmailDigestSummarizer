@@ -14,7 +14,8 @@ on top of deleting your emails. To control this, the script only returns the mos
 If you'd like to retrieve ALL emails from medium, then uncomment the code I left under the get_emails function. This is not recommended as each email may contain up to 20 articles, and if you have say 20 daily digests in your inbox, you might have more than you care to read and can expect the script to take much longer to run.
 
 ## Getting Started
-Run pip install -r requirements.txt to install all dependencies.
+- Run pip install -r requirements.txt to install all dependencies.
+- Get punctuation lexicon: nltk.download('punkt')
 
 Otherwise, open either the notebook or .py file and enter your email and password to your gmail account. I highly recommend you create an app password with gmail in order to ensure your account remains secure! Here's a how-to for gmail users: https://support.google.com/accounts/answer/185833?hl=en
 
