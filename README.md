@@ -1,4 +1,4 @@
-# Email Digest Summarizer
+# Email Newsletter Summarizer
 
 Every other day or so I get an Email from Medium.com with a daily digest of articles they think I might like.
 This a cool feature and I like to go through the articles with a cup of coffee when I have the time. The only problem is
