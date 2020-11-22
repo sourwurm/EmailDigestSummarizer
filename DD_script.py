@@ -337,8 +337,8 @@ sums = []
 #looping through each article
 for sent_score in scores:
     
-    #getting the 7 highest scoring sentences for each article
-    summary_sent = heapq.nlargest(7, sent_score, key = sent_score.get)
+    #getting the 5 highest scoring sentences for each article
+    summary_sent = heapq.nlargest(5, sent_score, key = sent_score.get)
     
     #joining each summary into a single string
     summary = ' '.join(summary_sent)
