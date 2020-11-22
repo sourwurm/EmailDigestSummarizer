@@ -404,9 +404,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <div class="w3-bar w3-red w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Your Links:</a>
-    <a href="https://medium.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Medium</a>
-    <a href="https://reddit.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Reddit</a>
     <a href="https://www.linkedin.com/feed/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">LinkedIn</a>
+    <a href="https://www.bloomberg.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Bloomberg</a>
+    <a href="https://medium.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Medium</a>
     <a href="https://www.gmail.com/" target = "_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Gmail</a>
   </div>
 </div>
