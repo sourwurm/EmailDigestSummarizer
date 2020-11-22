@@ -24,11 +24,11 @@ After that, just run the script and your articles should appear in your browser 
 
 #### Home Screen
 
-![](/ex2.png)
+![](/ex1.png)
 
 #### Example Summary
 
-![](/ex1.png)
+![](/ex2.png)
 
 Note: Articles with missing authors no longer display empty brackets.
 
