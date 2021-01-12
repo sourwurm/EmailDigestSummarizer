@@ -13,11 +13,14 @@ This script looks for Medium emails in your Inbox; meaning it's looking in Prima
 If you'd like to retrieve ALL emails from medium, then uncomment the code I left under the get_emails function. This is not recommended as each email may contain up to 20 articles, and if you have say 20 daily digests in your inbox, you might have more than you care to read and can expect the script to take much longer to run.
 
 ## Getting Started
-- Run pip install -r requirements.txt to install all dependencies.
-- Download punctuation lexicon: import nltk -> nltk.download('punkt')
-- Download stopwords lexicon: import nltk -> nltk.download('stopwords')
+- Install all dependencies from requirements.txt
+- Download punctuation lexicon: import nltk, then: nltk.download('punkt')
+- Download stopwords lexicon: import nltk, then: nltk.download('stopwords')
+- These are of course one-time steps. This part can be skipped if you already have the lexicons/dependencies.
+- Open either the notebook or .py file in a code editor and edit in your email and password to your gmail account. 
+- Save, and run!
 
-Open either the notebook or .py file and enter your email and password to your gmail account. I highly recommend you create an app password with gmail in order to ensure your account remains secure! Here's a how-to for gmail users: https://support.google.com/accounts/answer/185833?hl=en
+I highly recommend you create an app password with gmail in order to ensure your account remains secure! Here's a how-to for gmail users: https://support.google.com/accounts/answer/185833?hl=en
 
 After entering your login info, just run the script and your articles should appear in your browser window. The links in the navigator bar take you to your accounts on the respective sites, for ease of getting your day started. The links at the very bottom under "Contact" link to my own profiles, in case you're curious to learn more about me :)
 
