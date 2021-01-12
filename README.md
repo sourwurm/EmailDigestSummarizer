@@ -8,8 +8,7 @@ Usually I have to sift through the articles, skimming to see if I can spot anyth
 Here I aim to optimize this sifting process by summarizing every article instead!
 
 ## Note
-This script looks for Medium emails in your Inbox; meaning it's looking in Primary, Social, Promotions, etc.. This can potentially be A LOT of articles if you're not
-on top of deleting your emails. To control this, the script only returns the most recent email by default. 
+This script looks for Medium emails in your Inbox; meaning it's looking in Primary, Social, Promotions, etc., basically all of your categories. This can potentially be A LOT of articles if you're not on top of deleting your emails. To control this, the script only returns the most recent email by default. 
 
 If you'd like to retrieve ALL emails from medium, then uncomment the code I left under the get_emails function. This is not recommended as each email may contain up to 20 articles, and if you have say 20 daily digests in your inbox, you might have more than you care to read and can expect the script to take much longer to run.
 
@@ -20,7 +19,7 @@ If you'd like to retrieve ALL emails from medium, then uncomment the code I left
 
 Open either the notebook or .py file and enter your email and password to your gmail account. I highly recommend you create an app password with gmail in order to ensure your account remains secure! Here's a how-to for gmail users: https://support.google.com/accounts/answer/185833?hl=en
 
-After that, just run the script and your articles should appear in your browser window. The links in the navigator bar take you to your accounts on the respective sites, for ease of getting your day started. The links at the very bottom under "Contact" link to my own profiles, in case you're curious to learn more about me :)
+After entering your login info, just run the script and your articles should appear in your browser window. The links in the navigator bar take you to your accounts on the respective sites, for ease of getting your day started. The links at the very bottom under "Contact" link to my own profiles, in case you're curious to learn more about me :)
 
 ### Home Screen
 
@@ -30,10 +29,8 @@ After that, just run the script and your articles should appear in your browser 
 
 ![](/pic2.png)
 
-Note: Articles with missing authors no longer display empty brackets.
-
 ## Breakdown of Steps
-This is a high-level explanation of the steps the script takes.
+This is a basic explanation of the steps the script takes.
 1. Sign in to gmail
 2. Look for emails coming from noreply@Medium.com
 3. Parse those emails for the article links
